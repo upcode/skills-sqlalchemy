@@ -19,43 +19,43 @@ init_app()
 # # Start here.
 
 
-# # Part 2: Write queries
+# Part 2: Write queries
 
-# # 1. Get the brand with the **id** of 8.
-# db.session.query(Brand).filter(Brand.id == 8).one()
-
-
-# # 2. Get all models with the **name** Corvette and the **brand_name** Chevrolet.
-# db.session.query(Model).filter_by(name="Corvette", brand_name="Chevrolet").all()
-
-# # 3. Get all models that are older than 1960.
-# db.session.query(Model).filter(Model.year == 1960)
-
-# # 4. Get all brands that were founded after 1920.
-# db.session.query(Brand).filter(Model.year > 1920)
-
-# # 5. Get all models with names that begin with "Cor".
-# db.session.query(Model).filter(Model.name.like('%Cor%')).all()
-
-# # 6. Get all brands with that were founded in 1903 and that are not yet discontinued.
-# db.session.query(Brand).filter((Brand.founded == 1903) & (Brand.discontinued.isnot("null")))
-
-# # 7. Get all brands with that are either discontinued or founded before 1950.
-# db.session.query(Brand).filter((Brand.founded < 1950) | (Brand.discontinued.isnot("null")))
-
-# # 8. Get any model whose brand_name is not Chevrolet.
-# db.session.query(Model).filter(Model.brand_name.isnot("Chevrolet"))
-
-# # Fill in the following functions. (See directions for more info.)
+# 1. Get the brand with the **id** of 8.
+db.session.query(Brand).filter(Brand.id == 8).one()
 
 
-# def get_model_info(year):
-#     '''Takes in a year, and prints out each model, brand_name, and brand
-#     headquarters for that year using only ONE database query.'''
+# 2. Get all models with the **name** Corvette and the **brand_name** Chevrolet.
+db.session.query(Model).filter_by(name="Corvette", brand_name="Chevrolet").all()
 
-#     car_model = Model.query.filter_by(year=year)
-#     for car in car_model:
-#         print car_model.model, car_model.brand_name, car_model.headquarters
+# 3. Get all models that are older than 1960.
+db.session.query(Model).filter(Model.year == 1960)
+
+# 4. Get all brands that were founded after 1920.
+db.session.query(Brand).filter(Model.year > 1920)
+
+# 5. Get all models with names that begin with "Cor".
+db.session.query(Model).filter(Model.name.like('%Cor%')).all()
+
+# 6. Get all brands with that were founded in 1903 and that are not yet discontinued.
+db.session.query(Brand).filter((Brand.founded == 1903) & (Brand.discontinued.isnot("null")))
+
+# 7. Get all brands with that are either discontinued or founded before 1950.
+db.session.query(Brand).filter((Brand.founded < 1950) | (Brand.discontinued.isnot("null")))
+
+# 8. Get any model whose brand_name is not Chevrolet.
+db.session.query(Model).filter(Model.brand_name.isnot("Chevrolet"))
+
+# Fill in the following functions. (See directions for more info.)
+
+
+def get_model_info(year):
+    '''Takes in a year, and prints out each model, brand_name, and brand
+    headquarters for that year using only ONE database query.'''
+
+    car_model = Model.query.filter_by(year=year)
+    for car in car_model:
+        print car_model.model, car_model.brand_name, car_model.headquarters
 
 
 def get_brands_summary():
@@ -68,8 +68,8 @@ def get_brands_summary():
     brands_summary_list = []
 
     for brands in brands_summary:
-    brands_summary_list.append(brand.brand_name)
-    brands_list = set(brands_summary_list)
+        brands_summary_list.append(brand.brand_name)
+        brands_list = set(brands_summary_list)
 
     for brand in brands_list:
         print "Brand: {}".format(brand.brand_name)
